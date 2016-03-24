@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import data from '../public/data'
 import ShowCard from './ShowCard'
+import _ from 'lodash'
 
 export default class Search extends Component {
   constructor (...args) {
@@ -17,13 +18,13 @@ export default class Search extends Component {
   }
 
   render () {
-    const searchShows = (show) => {
+    const searchShows = _.memoize((show) => {
       if (this.state.searchTerm.length) {
         return `${show.title} ${show.description}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0
       } else {
         return true
       }
-    }
+    })
 
     return (
       <div className='container'>
