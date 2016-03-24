@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 const ShowCard = (props) => (
   <div className='show-card'>
@@ -10,5 +10,9 @@ const ShowCard = (props) => (
     </div>
   </div>
 )
+
+ShowCard.propTypes = {
+  show: PropTypes.object.isRequired
+}
 
 export default ShowCard
