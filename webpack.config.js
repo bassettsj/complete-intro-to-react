@@ -19,7 +19,7 @@ module.exports = {
     preLoaders: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loader: 'eslint-loader',
         include: path.join(__dirname, '/js'),
         exclude: /node_modules/
       }
@@ -28,6 +28,10 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel-loader'
+      }, {
+        test: /\.json$/,
+        loader: 'json',
+        exclude: /node_modules/
       }
     ]
   }
