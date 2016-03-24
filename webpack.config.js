@@ -16,6 +16,14 @@ module.exports = {
     chunks: false
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        include: path.join(__dirname, '/js'),
+        exclude: /node_modules/
+      }
+    ],
     loaders: [
       {
         test: /\.jsx?$/,
