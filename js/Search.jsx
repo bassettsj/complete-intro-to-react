@@ -1,8 +1,14 @@
 import React from 'react'
-import shows from '../public/data'
-
+import data from '../public/data'
+import ShowCard from './ShowCard'
 const Search = () => (
-  <pre><code>{JSON.stringify(shows, null, 4)}</code></pre>
+  <div className='container'>
+    <div className='shows'>
+      {data.shows.map((show, index) => (
+        <ShowCard show={show} key={show.imdbID} />
+      ))}
+    </div>
+  </div>
 )
 
 export default Search
