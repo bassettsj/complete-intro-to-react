@@ -4,7 +4,8 @@
   "description": "A two day workshop on a complete intro to React",
   "main": "index.js",
   "scripts": {
-    "test": "standard",
+    "test": "mocha",
+    "lint": "standard",
     "build": "webpack",
     "watch": "webpack --watch"
   },
@@ -12,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "0.9.1",
+    "babel-polyfill": "^6.7.4",
     "express": "4.13.4",
     "lodash": "4.6.1",
     "react": "^0.14.7",
