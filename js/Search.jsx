@@ -29,7 +29,7 @@ export default class Search extends Component {
     return (
       <div className='container'>
         <header className='header'>
-          <h1 className='brand'>sVideo</h1>
+          <h1 className='brand'>svideo</h1>
           <input type='search' placeholder='search' className='search-input' value={this.state.searchTerm} onChange={this.handleSearchTermEvent} />
         </header>
         <div className='shows'>
