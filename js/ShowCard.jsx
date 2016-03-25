@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react'
+const React = require('react')
 
 const ShowCard = (props) => (
   <div className='show-card'>
-    <img className='show-card-img' src={`public/img/posters/${props.poster}`} alt={`poster of ${props.title}`} />
+    <img src={`public/img/posters/${props.poster}`} className='show-card-img' />
     <div className='show-card-text'>
       <h3 className='show-card-title'>{props.title}</h3>
       <h4 className='show-card-year'>({props.year})</h4>
@@ -11,13 +11,13 @@ const ShowCard = (props) => (
   </div>
 )
 
-const { string } = PropTypes
+const { string } = React.PropTypes
 
 ShowCard.propTypes = {
-  poster: string.isRequired,
   title: string.isRequired,
+  description: string.isRequired,
   year: string.isRequired,
-  description: string.isRequired
+  poster: string.isRequired
 }
 
-export default ShowCard
+module.exports = ShowCard

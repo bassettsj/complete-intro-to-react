@@ -1,45 +1,36 @@
-import React, { Component } from 'react'
-import data from '../public/data'
-import ShowCard from './ShowCard'
-import _ from 'lodash'
+const React = require('react')
+const ShowCard = require('./ShowCard')
+const { object } = React.PropTypes
 
-export default class Search extends Component {
-  constructor (...args) {
-    super(...args)
-    this.state = {
+const Search = React.createClass({
+  getInitialState () {
+    return {
       searchTerm: ''
     }
-
-    this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
-  }
-
-  handleSearchTermEvent (e) {
-    this.setState({ searchTerm: e.target.value })
-  }
-
+  },
+  propTypes: {
+    route: object
+  },
+  handleSearchTermEvent (event) {
+    this.setState({ searchTerm: event.target.value })
+  },
   render () {
-    const searchShows = _.memoize((show) => {
-      if (this.state.searchTerm.length) {
-        return `${show.title} ${show.description}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0
-      } else {
-        return true
-      }
-    })
-
     return (
       <div className='container'>
         <header className='header'>
           <h1 className='brand'>svideo</h1>
-          <input type='search' placeholder='search' className='search-input' value={this.state.searchTerm} onChange={this.handleSearchTermEvent} />
+          <input value={this.state.searchTerm} className='search-input' type='text' placeholder='Search' onChange={this.handleSearchTermEvent} />
         </header>
         <div className='shows'>
-          {data.shows.filter(searchShows).map((show, index) => (
-            <ShowCard {...show} key={show.imdbID} />
+          {this.props.route.shows
+            .filter((show) => `${show.title} ${show.description}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0)
+            .map((show) => (
+              <ShowCard {...show} key={show.imdbID} />
           ))}
         </div>
       </div>
     )
   }
-}
+})
 
-export default Search
+module.exports = Search
